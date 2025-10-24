@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARMES</title>
+    <link rel="icon" type="image/x-icon" href="2.png">
+    <!-- Importing Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importing Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Page transition styles */
+        .page {
+            display: none; /* Hide all pages by default */
+        }
+        .page.active {
+            display: block; /* Show active page */
+        }
+        /* Hero background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(13.png);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <style>
+        /* Hide the popup by default */
+        .popup {
+            display: none; 
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+        }
+
+        /* The popup content box */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            max-width: 500px; /* Max width for the box */
+            text-align: center;
+            position: relative;
+        }
+
+        /* The image inside the popup */
+        .popup-img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* The Close Button (X) */
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <!-- Using the uploaded logo -->
+                <img src="1.png" alt="PARMES Logo" class="h-12 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/200x80/003366/FFFFFF?text=PARMES';">
+            </div>
+            <div class="hidden md:flex space-x-6" id="nav-links">
+                <a href="#" class="nav-link text-blue-700 font-semibold border-b-2 border-blue-700" data-page="page-home">Home</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-700" data-page="page-about">About Us</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-700" data-page="page-mission">What We Do</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-700" data-page="page-team">Our Team</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-700" data-page="page-support">Support Us</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button class="text-gray-600 focus:outline-none" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <a href="#" class="nav-link block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-700" data-page="page-home">Home</a>
+            <a href="#" class="nav-link block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-700" data-page="page-about">About Us</a>
+            <a href="#" class="nav-link block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-700" data-page="page-mission">What We Do</a>
+            <a href="#" class="nav-link block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-700" data-page="page-team">Our Team</a>
+            <a href="#" class="nav-link block px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-700" data-page="page-support">Support Us</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Home Page -->
+        <section id="page-home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-bg text-white">
+                <div class="container mx-auto px-6 py-32 md:py-48 text-center">
+                    <!-- <img src="1.png" alt="PARMES Logo" class="h-32 w-auto mx-auto mb-8"> -->
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Plastic and Air Regeneration Mission for Earth Sustainability (PARMES)</h1>
+                    <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+                        Our mission is to innovate, recycle, and restore the Earth by implementing scalable solutions for plastic waste management and atmospheric purification.
+                    </p>
+                    <a href="#" class="nav-link-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300" data-page="page-mission">Learn What We Do</a>
+                </div>
+            </div>
+            <!-- Key Activities Preview -->
+            <div class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Our Dual-Action Approach</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Card 1: Plastic Recycling -->
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold text-blue-700 mb-3">Plastic Recycling</h3>
+                            <p class="text-gray-600">Collection, segregation, and conversion of plastic waste into eco-products and raw materials.</p>
+                        </div>
+                        <!-- Card 2: Air Regeneration -->
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold text-blue-700 mb-3">Air Regeneration</h3>
+                            <p class="text-gray-600">Installation of air-purifying systems in urban zones and planting of urban green belts.</p>
+                        </div>
+                        <!-- Card 3: Community Engagement -->
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold text-blue-700 mb-3">Community Engagement</h3>
+                            <p class="text-gray-600">Conducting awareness campaigns, school programs, and local clean-up drives.</p>
+                        </div>
+                        <!-- Card 4: Innovation & Research -->
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold text-blue-700 mb-3">Innovation & Research</h3>
+                            <p class="text-gray-600">Developing sustainable materials and technologies to reduce future waste and emissions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div><br><br></div>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Join Our Mission</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        We are building a team of passionate individuals, communities, and partners. Find out how you can contribute.
+                    </D>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Careers -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                        <h2 class="text-2xl font-semibold text-blue-700 mb-3">Careers</h2>
+                        <p class="text-gray-600 mb-6">
+                            Help us build a sustainable future. We're looking for talented engineers, project managers, and community leaders.
+                        </p>
+                        <a href="#" class="nav-link-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300" data-page="page-contact">View Openings</a>
+                    </div>
+                    <!-- Volunteer -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                        <h2 class="text-2xl font-semibold text-blue-700 mb-3">Volunteer</h2>
+                        <p class="text-gray-600 mb-6">
+                            Be the change in your community. Join our local clean-up drives, awareness campaigns, and school programs.
+                        </p>
+                        <a href="#" class="nav-link-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300" data-page="page-contact">Sign Up</a>
+                    </div>
+                    <!-- Partner -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                        <h2 class="text-2xl font-semibold text-blue-700 mb-3">Partner With Us</h2>
+                        <p class="text-gray-600 mb-6">
+                            We collaborate with municipalities, NGOs, schools, and corporations to scale our impact. Let's work together.
+                        </p>
+                        <a href="#" class="nav-link-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300" data-page="page-contact">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="page-about" class="page py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">About PARMES</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Plastic and Air Regeneration Mission for Earth Sustainability
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 max-w-4xl mx-auto mb-12">
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-4">Our Vision</h2>
+                    <p class="text-gray-700 text-lg">
+                        To create a cleaner, healthier, and sustainable planet by regenerating ecosystems, reducing plastic waste, and improving air quality for communities globally.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 max-w-4xl mx-auto mb-12">
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-4">Our Mission</h2>
+                    <p class="text-gray-700 text-lg">
+                        To innovate, recycle, and restore the Earth by implementing scalable solutions for plastic waste management and atmospheric purification, while empowering communities and promoting environmental awareness.
+                    </p>
+                </div>
+
+                <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-8 md:p-12 max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-semibold text-red-800 mb-4">The Problem We Address</h2>
+                    <div class="space-y-4 text-gray-700 text-lg">
+                        <p><strong class="font-semibold">Global Waste Accumulation:</strong> Plastic waste is accumulating globally, polluting our land and oceans at an alarming rate.</p>
+                        <p><strong class="font-semibold">Declining Air Quality:</strong> Air pollution is rising in urban and industrial areas, severely affecting human health and biodiversity.</p>
+                        <p><strong class="font-semibold">The Market Gap:</strong> Few integrated solutions exist to address both plastic recycling and air quality improvement together. We are here to fill that gap with a sustainable, long-term model.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- What We Do Page (Mission) -->
+        <section id="page-mission" class="page py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">What We Do</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        We implement a dual-action approach to tackle pollution head-on.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Plastic Recycling -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="e1.png" alt="Plastic Recycling" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Plastic Recycling</h2>
+                            <p class="text-gray-600 mb-4">We manage the full lifecycle of plastic waste, from collection and segregation to conversion. Our process transforms harmful plastics into eco-friendly products or raw materials for industry, closing the loop on waste.</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Community collection drives</li>
+                                <li>Advanced material segregation</li>
+                                <li>Upcycling into new products</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Air Regeneration -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="e2.png" alt="Air Regeneration" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Air Regeneration</h2>
+                            <p class="text-gray-600 mb-4">We actively improve air quality in polluted areas. By installing cutting-edge air-purifying systems and planting urban green belts, we filter harmful pollutants and restore clean air to communities.</p>
+                             <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Urban air-purification systems</li>
+                                <li>Reforestation and green belt planting</li>
+                                <li>Pollution monitoring and R&D</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Community Engagement -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="e3.png" alt="Community Engagement" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Community Engagement</h2>
+                            <p class="text-gray-600 mb-4">Change starts with awareness. We run extensive campaigns, school programs, and local clean-up drives to educate and empower communities, turning local action into global impact.</p>
+                             <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Educational workshops</li>
+                                <li>School partnership programs</li>
+                                <li>Volunteer clean-up events</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Innovation & Research -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="e4.png" alt="Innovation & Research" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Innovation & Research</h2>
+                            <p class="text-gray-600 mb-4">We are committed to finding tomorrow's solutions. Our R&D team focuses on developing new sustainable materials, biodegradable products, and more efficient technologies to reduce future plastic waste and emissions.</p>
+                             <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Biodegradable material research</li>
+                                <li>AI-powered pollution monitoring</li>
+                                <li>Partnerships with research institutions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Page -->
+        <section id="page-team" class="page py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        The dedicated professionals behind PARMES, driving our mission for a sustainable tomorrow.
+                    </p>
+                </div>
+
+                <!-- Team Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                    
+                    <!-- Team Member 1 -->
+                    <div class="team-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="team-1.1.jpg" alt="Team Member 1" class="w-full h-65 object-cover" onerror="this.onerror=null;this.src='https.placehold.co/400x400/E0F2FE/0C4A6E?text=Team+Member';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Muhammed Niyas</h3>
+                            <p class="text-blue-600 mb-3">CEO & Team Lead</p>
+                            <p class="text-gray-500 text-sm">
+                                Leads the enterprise vision and strategy, managing key stakeholders and guiding the team to meet its global goals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="team-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="team-2.1.jpg" alt="Team Member 2" class="w-full h-65 object-cover" onerror="this.onerror=null;this.src='https.placehold.co/400x400/E0F2FE/0C4A6E?text=Team+Member';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Amal Madhu</h3>
+                            <p class="text-blue-600 mb-3">CTO & Head of Innovation</p>
+                            <p class="text-gray-500 text-sm">
+                                Leads "Innovation & Research" , managing recycling and air purification technologies and developing sustainable materials.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="team-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="team-3.1.jpg" alt="Team Member 3" class="w-full h-65 object-cover" onerror="this.onerror=null;this.src='https.placehold.co/400x400/E0F2FE/0C4A6E?text=Team+Member';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Bhoomija M</h3>
+                            <p class="text-blue-600 mb-3">Head of Community Impact & Partnerships</p>
+                            <p class="text-gray-500 text-sm">
+                                Leads "Community Engagement", awareness campaigns and builds strategic "Partnerships" with schools, NGOs, and corporations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="team-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="team-4.1.jpg" alt="Team Member 4" class="w-full h-65 object-cover" onerror="this.onerror=null;this.src='https.placehold.co/400x400/E0F2FE/0C4A6E?text=Team+Member';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Harishyam A</h3>
+                            <p class="text-blue-600 mb-3">COO & Head of Operations</p>
+                            <p class="text-gray-500 text-sm">
+                                Manages on-the-ground "Key Activities" , overseeing plastic collection and air purification system installation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5 -->
+                    <div class="team-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="team-5.1.jpg" alt="Team Member 5" class="w-full h-65 object-cover" onerror="this.onerror=null;this.src='https.placehold.co/400x400/E0F2FE/0C4A6E?text=Team+Member';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Arjun K V</h3>
+                            <p class="text-blue-600 mb-3">CFO & Head of Sustainability</p>
+                            <p class="text-gray-500 text-sm">
+                                Manages "Financial Resources" and tracks "Success Metrics" to ensure "Financial Sustainability" and reinvestment.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Us Page -->
+        <section id="page-support" class="page py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Support Our Work</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Your support fuels our mission. Help us invest in new technologies, expand our operations, and restore our planet.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- Make a Donation -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center">
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Make a Donation</h2>
+                            <p class="text-gray-600 mb-6 md:mb-0">
+                                Every contribution, big or small, helps us remove plastic from our environment and purify the air we breathe.
+                            </p>
+                        </div>
+                        <a href="#" id="myButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 whitespace-nowrap">
+                            Donate Now
+                        </a>
+                        <div id="myPopup" class="popup">
+
+                            <div class="popup-content">
+                                <span class="close-btn">&times;</span>
+                                <p><br></p>
+                                <img src="gp.jpg" alt="Popup Image" class="popup-img">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Corporate Sponsorship -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-3">Corporate Sponsorship & CSR</h2>
+                        <p class="text-gray-600 mb-6">
+                            Align your brand with a mission that matters. We offer partnership opportunities for corporations committed to environmental, social, and governance (ESG) goals and corporate social responsibility (CSR).
+                        </p>
+                        <a href="#" class="nav-link-btn text-blue-600 font-semibold hover:underline" data-page="page-team">Contact our partnerships team &rarr;</a>
+                    </div>
+                    
+                    <!-- Impact Investing -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-3">Impact Investing</h2>
+                        <p class="text-gray-600 mb-6">
+                            We are seeking social impact investments to scale our technology and expand our franchise model globally. If you are an investor looking for measurable environmental returns, let's connect.
+                        </p>
+                        <a href="#" class="nav-link-btn text-blue-600 font-semibold hover:underline" data-page="page-team">Speak with our financial officer &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1><br><br></h1>
+            </div>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        We'd love to hear from you. Whether you're interested in partnering, volunteering, or learning more about our mission, please reach out.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <form action="#" method="POST" id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- First Name -->
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" name="first-name" id="first-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Alex">
+                            </div>
+                            <!-- Last Name -->
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" name="last-name" id="last-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Johnson">
+                            </div>
+                            <!-- Email -->
+                            <div class="md:col-span-2">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" name="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="alex.johnson@example.com">
+                            </div>
+                            <!-- Subject -->
+                            <div class="md:col-span-2">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <input type="text" name="subject" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Partnership Inquiry">
+                            </div>
+                            <!-- Message -->
+                            <div class="md:col-span-2">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea name="message" id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="text-right mt-6">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <!-- Success Message -->
+                    <div id="form-success-message" class="hidden mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                        Thank you! Your message has been sent successfully. We'll be in touch soon.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logo and Mission -->
+                <div>
+                    <img src="1.png" alt="PARMES Logo" width="65%" onerror="this.onerror=null;this.src='https://placehold.co/200x80/FFFFFF/003366?text=PARMES';">
+                    <p>&copy; 2025 PARMES. All rights reserved.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="nav-link-btn hover:text-white" data-page="page-about">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link-btn hover:text-white" data-page="page-mission">What We Do</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link-btn hover:text-white" data-page="page-team">Our Team</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link-btn hover:text-white" data-page="page-support">Support Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact Us</h4>
+                    <p class="mb-2">Green Valley, Eco City, 691534</p>
+                    <p class="mb-2">info@parmes.com</p>
+                    <p>+91 9072 208 135</p>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Page Switching Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinkBtns = document.querySelectorAll('.nav-link-btn'); // For buttons that also navigate
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
+            const formSuccessMessage = document.getElementById('form-success-message');
+
+            // --- Page Navigation Logic ---
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the target page
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+
+                // Update nav link active state (for desktop)
+                document.querySelectorAll('#nav-links .nav-link').forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('text-blue-700', 'font-semibold', 'border-b-2', 'border-blue-700');
+                        link.classList.remove('text-gray-600');
+                    } else {
+                        link.classList.remove('text-blue-700', 'font-semibold', 'border-b-2', 'border-blue-700');
+                        link.classList.add('text-gray-600');
+                    }
+                });
+
+                // Update nav link active state (for mobile)
+                document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('text-blue-700', 'font-semibold');
+                        link.classList.remove('text-gray-600');
+                    } else {
+                        link.classList.remove('text-blue-700', 'font-semibold');
+                        link.classList.add('text-gray-600');
+                    }
+                });
+                
+                // Close mobile menu after navigation
+                mobileMenu.classList.add('hidden');
+                
+                // Scroll to top of page
+                window.scrollTo(0, 0);
+            }
+
+            // Add click listeners to all nav links (desktop and mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.dataset.page;
+                    showPage(pageId);
+                });
+            });
+
+            // Add click listeners to other navigation buttons (like in hero and footer)
+            navLinkBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = btn.dataset.page;
+                    showPage(pageId);
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Contact Form Submission ---
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault(); // Stop the form from submitting traditionally
+                    
+                    // Hide the form and show the success message
+                    // In a real app, you'd send data to a server here.
+                    contactForm.classList.add('hidden');
+                    formSuccessMessage.classList.remove('hidden');
+                });
+            }
+
+            // Show the home page by default
+            showPage('page-home');
+        });
+    </script>
+
+    <script>
+        // Get the elements
+        var popup = document.getElementById("myPopup");
+        var btn = document.getElementById("myButton");
+        var span = document.getElementsByClassName("close-btn")[0];
+
+        // When the user clicks the button, open the popup
+        btn.onclick = function() {
+            popup.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the popup
+        span.onclick = function() {
+            popup.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the popup content, close it
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
