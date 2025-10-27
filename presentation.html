@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARMES Presentation</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom transition for slides */
+        .slide {
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .slide-hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            z-index: 0;
+        }
+        .slide-visible {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+        /* Removed the fixed-width .slide-content rule */
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen m-0 p-0 overflow-hidden">
+
+    <!-- Presentation Container -->
+    <div class="relative w-full h-full">
+
+        <!-- Slide 1: Title Slide -->
+        <div class="slide slide-visible absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-white">
+            <div class="slide-content w-full h-full flex flex-col items-center justify-center">
+                <img src="Image/2.png" alt="PARMES Logo" class="h-40 w-40 object-contain mb-6 rounded-full shadow-lg"
+                     onerror="this.src='https://placehold.co/160x160/007ab3/FFFFFF?text=PARMES'; this.onerror=null;">
+                <h1 class="text-5xl md:text-7xl font-bold text-blue-800">PARMES</h1>
+                <p class="text-2xl md:text-3xl text-green-600 mt-2 font-semibold">Sustainable Today, Alive Tomorrow</p>
+                <p class="text-lg text-gray-700 mt-6 max-w-2xl">
+                    Plastic and Air Regeneration Mission for Earth Sustainability
+                </p>
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-800">Team Members</h3>
+                    <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 text-gray-600">
+                        <li>Muhammed Niyas</li>
+                        <li>Amal Madhu</li>
+                        <li>Bhoomija M</li>
+                        <li>Arjun K V</li>
+                        <li>Harisyam A</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Vision & Mission -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Vision</h2>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        To create a cleaner, healthier, and sustainable planet by regenerating ecosystems, reducing plastic waste, and improving air quality for communities globally.
+                    </p>
+                    <h2 class="text-3xl font-bold text-green-700 mb-4">Our Mission</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        To innovate, recycle, and restore the Earth by implementing scalable solutions for plastic waste management and atmospheric purification, while empowering communities and promoting environmental awareness.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="Gemini_Generated_Image_h13xy6h13xy6h13x.jpg" alt="Futuristic Green City" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/22c55e/FFFFFF?text=Green+Future'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Opportunity (Problem) -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">The Opportunity</h2>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Problem Identification</h3>
+                    <ul class="space-y-3 text-lg mb-6">
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold text-2xl mt-1">&times;</span>
+                            <div><strong>Plastic Waste:</strong> Accumulating globally, polluting land and oceans.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold text-2xl mt-1">&times;</span>
+                            <div><strong>Air Pollution:</strong> Rising in urban and industrial areas, affecting health and biodiversity.</div>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Market Gap</h3>
+                     <ul class="space-y-3 text-lg mb-6">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gray-500 font-bold text-2xl mt-1">&rarr;</span>
+                            <div>Few integrated solutions address both plastic recycling and air quality improvement together.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                             <span class="text-gray-500 font-bold text-2xl mt-1">&rarr;</span>
+                            <div>Most existing programs are either local or lack long-term sustainability.</div>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Opportunity Statement</h3>
+                     <ul class="space-y-3 text-lg">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <div>Establish a social enterprise that combines technology, community engagement, and sustainable practices.</div>
+                        </li>
+                         <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <div>Position PARMES as a global model for environmental regeneration.</div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="Gemini_Generated_Image_rh42lhrh42lhrh42.jpg" alt="Recycling Facility" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/0284c7/FFFFFF?text=The+Problem'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Our Solution -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Solution: Key Activities</h2>
+                    <ul class="space-y-3 text-lg text-gray-700">
+                        <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                            <span class="text-blue-600 text-2xl">&#x267B;</span> <!-- Recycle Symbol -->
+                            <strong>Plastic Waste Management:</strong> Collection, segregation, and conversion into eco-products.
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                            <span class="text-green-600 text-2xl">&#x1F343;</span> <!-- Leaf Symbol -->
+                            <strong>Air Quality Improvement:</strong> Installing air-purifying systems and planting urban green belts.
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                            <span class="text-yellow-600 text-2xl">&#x1F46A;</span> <!-- People Symbol -->
+                            <strong>Community Engagement:</strong> Awareness campaigns, school programs, and clean-up drives.
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                            <span class="text-purple-600 text-2xl">&#x1F52C;</span> <!-- Microscope Symbol -->
+                            <strong>Research and Development (R&D):</strong> Developing sustainable materials and technologies.
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                            <span class="text-indigo-600 text-2xl">&#x1F91D;</span> <!-- Handshake Symbol -->
+                            <strong>Partnerships:</strong> Working with governments, NGOs, and corporations for greater impact.
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="Gemini_Generated_Image_yvauw7yvauw7yvau.jpg" alt="Innovation & Research Center" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/7c3aed/FFFFFF?text=Innovation'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Community & Impact -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Community & Impact</h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                        We measure success not just by environmental metrics, but by our positive social footprint.
+                    </p>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <strong>Community Empowerment:</strong> Engaging volunteers, schools, and communities.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <strong>Job Creation:</strong> Creating green jobs through recycling centers and related initiatives.
+                        </li>
+                         <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <strong>Environmental Education:</strong> Raising awareness on sustainable practices.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 font-bold text-2xl mt-1">&#10003;</span>
+                            <strong>Health and Well-being:</strong> Reducing pollution-related health risks for communities.
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="Gemini_Generated_Image_llg5lhllg5lhllg5.jpg" alt="Community Engagement Day" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/f59e0b/FFFFFF?text=Community'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Our Roadmap -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Roadmap</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-blue-500">
+                            <h3 class="text-xl font-semibold text-blue-700">Phase 1 - Pilot</h3>
+                            <p class="text-gray-700 mt-1">Launch a single center to test recycling and air purification technologies. Partner with local communities.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-yellow-500">
+                            <h3 class="text-xl font-semibold text-yellow-700">Phase 2 - Expansion</h3>
+                            <p class="text-gray-700 mt-1">Scale operations to multiple cities using franchise or partnership models. Expand product lines from recycled materials.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-500">
+                            <h3 class="text-xl font-semibold text-green-700">Phase 3 - Global Evolution</h3>
+                            <p class="text-gray-700 mt-1">Collaborate with international organizations. Position PARMES as a global benchmark for integrated environmental solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="Gemini_Generated_Image_h13xy6h13xy6h13x.jpg" alt="Sustainable Development Goals" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/10b981/FFFFFF?text=Our+Future'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Our Key Goals -->
+        <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
+            <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Key Goals</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded-lg shadow-sm border-l-4 border-blue-500">
+                            <h3 class="text-xl font-semibold text-blue-700">Short-Term (1-2 Years)</h3>
+                            <p class="text-gray-700 mt-1">Establish first operational center, recycle 500+ tons of plastic, and improve local air quality by 10%.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg shadow-sm border-l-4 border-yellow-500">
+                            <h3 class="text-xl font-semibold text-yellow-700">Medium-Term (3-5 Years)</h3>
+                            <p class="text-gray-700 mt-1">Expand to 5-10 cities and launch eco-friendly products from recycled plastic.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg shadow-sm border-l-4 border-green-500">
+                            <h3 class="text-xl font-semibold text-green-700">Long-Term (5+ Years)</h3>
+                            <p class="text-gray-700 mt-1">Create a global model for regeneration and contribute to UN SDGs 11, 12, 13, & 15.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <!-- Re-using an image, but it fits the theme of goals/future -->
+                    <img src="Gemini_Generated_Image_h13xy6h13xy6h13x.jpg" alt="Sustainable Development Goals" class="rounded-xl shadow-2xl object-cover w-full h-full"
+                         onerror="this.src='https://placehold.co/600x500/10b981/FFFFFF?text=Our+Future'; this.onerror=null;">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Thank You -->
+        <div class="slide slide-hidden absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-white">
+            <div class="slide-content w-full h-full flex flex-col items-center justify-center">
+                <img src="Image/1.png" alt="PARMES Logo" class="h-40 w-40 object-contain mb-6 rounded-full shadow-lg"
+                     onerror="this.src='https://placehold.co/128x128/007ab3/FFFFFF?text=PARMES'; this.onerror=null;">
+                <h1 class="text-5xl md:text-6xl font-bold text-blue-800">Thank You</h1>
+                <p class="text-2xl text-green-600 mt-2 font-semibold">Sustainable Today, Alive Tomorrow</p>
+                <a href="https://niyasmuthukad.github.io/parmes/" target="_blank" rel="noopener noreferrer"
+                   class="mt-8 text-lg text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-300">
+                    Visit our website: niyasmuthukad.github.io/parmes/
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button id="prevBtn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition-all duration-300 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button id="nextBtn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition-all duration-300 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <!-- Slide Indicators (Dots) -->
+        <div id="dotsContainer" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+            <!-- Dots will be dynamically generated here -->
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('dotsContainer');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            let currentSlide = 0;
+            let dots = [];
+
+            // Create dots for each slide
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300', 'z-20');
+                dot.classList.add(index === 0 ? 'bg-blue-600' : 'bg-gray-400', 'hover:bg-blue-500');
+                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                dot.addEventListener('click', () => showSlide(index));
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            });
+
+            function showSlide(index) {
+                // Ensure index is within bounds
+                if (index < 0) {
+                    index = slides.length - 1;
+                } else if (index >= slides.length) {
+                    index = 0;
+                }
+
+                // Remove visible class from all slides
+                slides.forEach((slide) => {
+                    slide.classList.remove('slide-visible');
+                    slide.classList.add('slide-hidden');
+                });
+                
+                // Add visible class to the target slide
+                slides[index].classList.remove('slide-hidden');
+                slides[index].classList.add('slide-visible');
+
+                // Update dots
+                dots.forEach((dot, dotIndex) => {
+                    dot.classList.toggle('bg-blue-600', dotIndex === index);
+                    dot.classList.toggle('bg-gray-400', dotIndex !== index);
+                });
+
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Event Listeners for buttons
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+
+            // Show the first slide initially
+            showSlide(0);
+        });
+    </script>
+
+</body>
+</html>
+
