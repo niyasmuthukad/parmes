@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PARMES Presentation</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     <style>
         body {
@@ -26,15 +24,64 @@
             transform: scale(1);
             z-index: 10;
         }
-        /* Removed the fixed-width .slide-content rule */
+        /* Styles for new controls */
+        .presentation-controls {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 30;
+            display: flex;
+            gap: 8px;
+        }
+        .control-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 9999px;
+            padding: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        .control-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+        }
+        .control-btn svg {
+            width: 20px;
+            height: 20px;
+            color: #333;
+        }
+        /* Hide icons by default */
+        .icon-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen m-0 p-0 overflow-hidden">
 
-    <!-- Presentation Container -->
+    <audio id="bg-music" src="path/to/your/music.mp3" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>
+    <div class="presentation-controls">
+        <button id="muteBtn" class="control-btn" aria-label="Mute Audio">
+            <svg id="icon-unmuted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M11.25 4.5v15m0 0a1.5 1.5 0 0 1-1.5 1.5H5.625a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 1.5-1.5h4.125a1.5 1.5 0 0 1 1.5 1.5Z" />
+            </svg>
+            <svg id="icon-muted" class="icon-hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M11.25 4.5v15m0 0a1.5 1.5 0 0 1-1.5 1.5H5.625a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 1.5-1.5h4.125a1.5 1.5 0 0 1 1.5 1.5Z" />
+            </svg>
+        </button>
+        <button id="fullscreenBtn" class="control-btn" aria-label="Toggle Fullscreen">
+            <svg id="icon-fullscreen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+            </svg>
+            <svg id="icon-exit-fullscreen" class="icon-hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l5.25 5.25" />
+            </svg>
+        </button>
+    </div>
     <div class="relative w-full h-full">
 
-        <!-- Slide 1: Title Slide -->
         <div class="slide slide-visible absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-white">
             <div class="slide-content w-full h-full flex flex-col items-center justify-center">
                 <img src="Image/2.png" alt="PARMES Logo" class="h-40 w-40 object-contain mb-6 rounded-full shadow-lg"
@@ -57,7 +104,6 @@
             </div>
         </div>
 
-        <!-- Slide 2: Vision & Mission -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
             <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
@@ -77,7 +123,6 @@
             </div>
         </div>
 
-        <!-- Slide 3: The Opportunity (Problem) -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
             <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
@@ -127,31 +172,25 @@
             </div>
         </div>
 
-        <!-- Slide 4: Our Solution -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
             <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Solution: Key Activities</h2>
                     <ul class="space-y-3 text-lg text-gray-700">
                         <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                            <span class="text-blue-600 text-2xl">&#x267B;</span> <!-- Recycle Symbol -->
-                            <strong>Plastic Waste Management:</strong> Collection, segregation, and conversion into eco-products.
+                            <span class="text-blue-600 text-2xl">&#x267B;</span> <strong>Plastic Waste Management:</strong> Collection, segregation, and conversion into eco-products.
                         </li>
                         <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                            <span class="text-green-600 text-2xl">&#x1F343;</span> <!-- Leaf Symbol -->
-                            <strong>Air Quality Improvement:</strong> Installing air-purifying systems and planting urban green belts.
+                            <span class="text-green-600 text-2xl">&#x1F343;</span> <strong>Air Quality Improvement:</strong> Installing air-purifying systems and planting urban green belts.
                         </li>
                         <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                            <span class="text-yellow-600 text-2xl">&#x1F46A;</span> <!-- People Symbol -->
-                            <strong>Community Engagement:</strong> Awareness campaigns, school programs, and clean-up drives.
+                            <span class="text-yellow-600 text-2xl">&#x1F46A;</span> <strong>Community Engagement:</strong> Awareness campaigns, school programs, and clean-up drives.
                         </li>
                         <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                            <span class="text-purple-600 text-2xl">&#x1F52C;</span> <!-- Microscope Symbol -->
-                            <strong>Research and Development (R&D):</strong> Developing sustainable materials and technologies.
+                            <span class="text-purple-600 text-2xl">&#x1F52C;</span> <strong>Research and Development (R&D):</strong> Developing sustainable materials and technologies.
                         </li>
                         <li class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                            <span class="text-indigo-600 text-2xl">&#x1F91D;</span> <!-- Handshake Symbol -->
-                            <strong>Partnerships:</strong> Working with governments, NGOs, and corporations for greater impact.
+                            <span class="text-indigo-600 text-2xl">&#x1F91D;</span> <strong>Partnerships:</strong> Working with governments, NGOs, and corporations for greater impact.
                         </li>
                     </ul>
                 </div>
@@ -162,7 +201,6 @@
             </div>
         </div>
         
-        <!-- Slide 5: Community & Impact -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
             <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
@@ -196,7 +234,6 @@
             </div>
         </div>
 
-        <!-- Slide 6: Our Roadmap -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-gray-50">
             <div class="slide-content w-full h-full flex flex-col md:flex-row-reverse items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
@@ -223,7 +260,6 @@
             </div>
         </div>
 
-        <!-- Slide 7: Our Key Goals -->
         <div class="slide slide-hidden absolute inset-0 flex items-center justify-center p-8 bg-white">
             <div class="slide-content w-full h-full flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center overflow-y-auto py-4">
@@ -244,14 +280,12 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <!-- Re-using an image, but it fits the theme of goals/future -->
                     <img src="Gemini_Generated_Image_h13xy6h13xy6h13x.jpg" alt="Sustainable Development Goals" class="rounded-xl shadow-2xl object-cover w-full h-full"
                          onerror="this.src='https://placehold.co/600x500/10b981/FFFFFF?text=Our+Future'; this.onerror=null;">
                 </div>
             </div>
         </div>
         
-        <!-- Slide 8: Thank You -->
         <div class="slide slide-hidden absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-white">
             <div class="slide-content w-full h-full flex flex-col items-center justify-center">
                 <img src="Image/1.png" alt="PARMES Logo" class="h-40 w-40 object-contain mb-6 rounded-full shadow-lg"
@@ -265,7 +299,6 @@
             </div>
         </div>
 
-        <!-- Navigation Buttons -->
         <button id="prevBtn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition-all duration-300 z-20">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -277,10 +310,8 @@
             </svg>
         </button>
 
-        <!-- Slide Indicators (Dots) -->
         <div id="dotsContainer" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-            <!-- Dots will be dynamically generated here -->
-        </div>
+            </div>
 
     </div>
 
@@ -292,6 +323,55 @@
             const prevBtn = document.getElementById('prevBtn');
             let currentSlide = 0;
             let dots = [];
+
+            // --- START: Updated Controls Logic ---
+            const music = document.getElementById('bg-music');
+            const muteBtn = document.getElementById('muteBtn');
+            const iconMuted = document.getElementById('icon-muted');
+            const iconUnmuted = document.getElementById('icon-unmuted');
+            
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const iconFullscreen = document.getElementById('icon-fullscreen');
+            const iconExitFullscreen = document.getElementById('icon-exit-fullscreen');
+
+            // Set initial muted state
+            music.muted = true;
+            iconMuted.classList.remove('icon-hidden');
+            iconUnmuted.classList.add('icon-hidden');
+            
+            music.play().catch(e => console.log("Autoplay was prevented. User must interact."));
+
+            muteBtn.addEventListener('click', () => {
+                music.muted = !music.muted;
+                if (music.muted) {
+                    iconMuted.classList.remove('icon-hidden');
+                    iconUnmuted.classList.add('icon-hidden');
+                } else {
+                    iconMuted.classList.add('icon-hidden');
+                    iconUnmuted.classList.remove('icon-hidden');
+                    music.play(); // Try to play if it was paused
+                }
+            });
+
+            // Listen for messages from the parent page (index.html)
+            window.addEventListener('message', (event) => {
+                if (event.data === 'exited-fullscreen') {
+                    // Update icon when parent exits fullscreen (e.g., user pressed Esc)
+                    iconFullscreen.classList.remove('icon-hidden');
+                    iconExitFullscreen.classList.add('icon-hidden');
+                }
+            });
+
+            fullscreenBtn.addEventListener('click', () => {
+                // Ask the parent window to go fullscreen
+                window.parent.postMessage('request-fullscreen', '*');
+                
+                // Optimistically update icon
+                iconFullscreen.classList.add('icon-hidden');
+                iconExitFullscreen.classList.remove('icon-hidden');
+            });
+            // --- END: Updated Controls Logic ---
+
 
             // Create dots for each slide
             slides.forEach((_, index) => {
@@ -359,4 +439,3 @@
 
 </body>
 </html>
-
